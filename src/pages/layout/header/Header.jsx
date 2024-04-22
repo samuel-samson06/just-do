@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import {MdSettings} from "react-icons/md"
-import {today} from "../../javascriptModels/today"
+import {today} from "../../utils/today"
 import { NavLink } from 'react-router-dom'
 import { Context } from '../../../context/Context'
 

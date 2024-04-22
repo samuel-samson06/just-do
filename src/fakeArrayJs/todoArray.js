@@ -185,5 +185,25 @@ export const todoRefrenceArray=[
             isComplete: true,
             id: `${idCaps[Math.floor(Math.random()*idCaps.length)]}${idSmall[Math.floor(Math.random()*idSmall.length)]}${idCaps[Math.floor(Math.random()*idCaps.length)]}${idSmall[Math.floor(Math.random()*idSmall.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idCaps[Math.floor(Math.random()*idCaps.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}`
         }],
+    },
+    {
+        task_name:'School Work',
+        date: date.toLocaleDateString(),
+        priority: 'low',
+        organization: 'school',
+        id: `${idCaps[Math.floor(Math.random()*idCaps.length)]}${idSmall[Math.floor(Math.random()*idSmall.length)]}${idCaps[Math.floor(Math.random()*idCaps.length)]}${idSmall[Math.floor(Math.random()*idSmall.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}`,
+        tasks: [{
+            task_name: 'Work With FUNCTIONALITIES',
+            isComplete: false,
+            id: `${idCaps[Math.floor(Math.random()*idCaps.length)]}${idSmall[Math.floor(Math.random()*idSmall.length)]}${idCaps[Math.floor(Math.random()*idCaps.length)]}${idSmall[Math.floor(Math.random()*idSmall.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idCaps[Math.floor(Math.random()*idCaps.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}`
+        },{
+            task_name: 'Review MTH 101',
+            isComplete: false,
+            id: `${idCaps[Math.floor(Math.random()*idCaps.length)]}${idSmall[Math.floor(Math.random()*idSmall.length)]}${idCaps[Math.floor(Math.random()*idCaps.length)]}${idSmall[Math.floor(Math.random()*idSmall.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idCaps[Math.floor(Math.random()*idCaps.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}`
+        },{
+            task_name: 'Pay out Fashion Dept hold up',
+            isComplete: false,
+            id: `${idCaps[Math.floor(Math.random()*idCaps.length)]}${idSmall[Math.floor(Math.random()*idSmall.length)]}${idCaps[Math.floor(Math.random()*idCaps.length)]}${idSmall[Math.floor(Math.random()*idSmall.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}${idCaps[Math.floor(Math.random()*idCaps.length)]}${idNum[Math.floor(Math.random()*idNum.length)]}`
+        }],
     }
 ]

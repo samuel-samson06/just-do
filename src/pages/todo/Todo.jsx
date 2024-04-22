@@ -1,24 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { todoRefrenceArray } from '../../fakeArrayJs/todoArray'
 
 function Todo() {
+    // FILTRERING THE TASKS BASED OFF USERS SELECTION AND USER PARAMS AUTOMATE ID
 
     const {id} = useParams()
-    // FILTRERING THE TASKS BASED OFF USERS SELECTION AND USER PARAMS AUTOMATE ID
-    const filtered=todoRefrenceArray.filter((eachTodo)=>{
-        return eachTodo.id===id
-    })
-    
+// WHEN YOU SELECT A TASK THEN ON THE USEEFFECT RUN THIS UPDATES THE STATE TO THE TASK YOU SELECTED BASED OFF THE ID OF THE TASK IN ORDER TO SELECT A PARTICULAR TASK
+    const [getFilteredTask, setGetFilteredTask] = useState([])
+       
+    useEffect(function(){
+        const filtered=todoRefrenceArray.filter((eachTodo)=>{
+            return eachTodo.id===id
+        })
+        setGetFilteredTask(filtered)
+    },[id])
+
     function handleCheck(task_id){
-        alert(task_id)
+        const all_tasks=getFilteredTask[0].tasks
+        // console.log(all_tasks);
+        const test = all_tasks.map(function(eachTask){
+            if(eachTask.id===task_id){
+                return({...eachTask,isComplete:!eachTask.isComplete}) 
+            }else{
+                return({...eachTask})
+            }
+        })
+        console.log(test);
+        setGetFilteredTask([{...getFilteredTask[0], tasks:test}]);
+        
     }
+
+    
     
   return (
     <React.Fragment>
         <div>
             {
-                filtered.map((todo)=>{
+                getFilteredTask.map((todo)=>{
                     // GETTTING THE TASKS FROM THE FILTRED ONE 
                     return(
                         <div key={todo.id}>
@@ -30,14 +49,12 @@ function Todo() {
                                     <p className='text-sm capitalize'><span className=' text-xs'>Organization: </span>{todo.organization}</p>
                                 </section>
                             </div>
-                            {/* MAPPING THROUGH TH RTASKS IN THE FAKE ARRAY */}
+                            {/* MAPPING THROUGH THE TASKS IN THE FAKE ARRAY */}
                             <div className=' flex flex-col gap-3 px-5 py-3 font-semibold'>
                                 {todo.tasks.map(function(task){
                                     return (
                                         <div key={task.id} className='flex items-center gap-3'>
-                                            <input type="checkbox" id='' onClick={function(){
-                                                handleCheck(task.id)
-                                            }}  name="" className=" accent-blue-400" />
+                                            <input type="checkbox" id='' onChange={function(){handleCheck(task.id)}} name="" checked={task.isComplete} className=" accent-blue-400" />
                                             <p>{task.task_name}</p>
                                         </div>
                                     )
