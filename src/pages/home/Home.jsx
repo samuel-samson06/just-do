@@ -7,7 +7,7 @@ function Home() {
   const {priority} = useContext(Context)
   return (
     <React.Fragment>
-      <div className=' flex flex-col min-h-screen bg-gray-100'>
+      <div className=' mt-10 sm:mt-0 flex flex-col min-h-screen bg-gray-100'>
         <p className=' pt-5 font-semibold text-xl underline text-center'>Order of Priority </p>
         <br />
         <div className=' pt-1 mb-4 pb-5 px-5 flex flex-col gap-3 '>

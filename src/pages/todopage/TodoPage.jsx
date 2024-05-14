@@ -7,7 +7,7 @@ function TodoPage() {
   const {theme} = useContext(Context)
   return (
     <React.Fragment>
-      <div className=' flex flex-col min-h-screen bg-gray-100'>
+      <div className=' mt-12 sm:mt-0 flex flex-col min-h-screen bg-gray-100'>
       <div className={` ${theme} pb-3 pt-2 pl-4`}>
         <Search/>
       </div>

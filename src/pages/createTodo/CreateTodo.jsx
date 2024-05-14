@@ -16,6 +16,7 @@ function CreateTodo() {
     const [emptyFiledTrigger, setEmptyFiledTrigger] = useState(false)
     const [selectOptions, setSelectOptions] = useState({priority:'low',organization:'personal'})
     const [listOfTodos, setListOfTodos] = useState([])
+    const [emptyListOfTodo,setEmptyListOfTodo] = useState("You Have No Tasks Here")
     // UseEffect To display field that are empty
     useEffect(function(){
         const timer = setTimeout(function(){
@@ -26,6 +27,14 @@ function CreateTodo() {
             clearTimeout(timer)
         })
     },[emptyFiledTrigger])
+    useEffect(function(){
+        const timer = setTimeout(function(){
+            setEmptyListOfTodo("You Have No Tasks Here")
+        },3000)
+        return(function(){
+            clearTimeout(timer)
+        })
+    })
     // Functions
     // Handles Input entries
     const handleInputField = (e)=>{
@@ -38,7 +47,22 @@ function CreateTodo() {
     }
     // Creates the folder for the General Array of all tasks
     const handleCreateTaskCollection = (e)=>{
+        const dateInstance = new Date()
         e.preventDefault()
+        if(listOfTodos.length===0){
+            setEmptyListOfTodo("Please Add a Task")
+        }
+        const todo = {task_name:namesInput.subject,date:dateInstance.toLocaleDateString(),
+            priority:selectOptions.priority,organization:selectOptions.organization,
+            id:dateInstance.getTime(),tasks:listOfTodos
+        }
+        todoRefrenceArray.push(todo)
+        console.log(todo)
+        setListOfTodos([])
+        setSelectOptions({priority:'low',organization:'personal'})
+        setNamesInput({subject:'',task:''})
+        navigate("/")
+
     }
     // Creates each tasks that would be added to a task folder
     const handleAddTask = (e)=>{
@@ -53,14 +77,17 @@ function CreateTodo() {
                 return([...prev,task])
             })
             setNamesInput({...namesInput,task:''})
-            console.log(todoRefrenceArray[0].tasks);
+            // console.log(todoRefrenceArray[0].tasks);
             console.log(listOfTodos);
         }
     }
     // Used to deleted an unwanted task
     const deleteTask = (id)=>{
-        
-        console.log(id);
+        const deleteTasks = listOfTodos.filter(function(eachTodo){
+            return eachTodo.id !== id
+        })
+        setListOfTodos(deleteTasks)
+        // console.log(id);
     }
     
     return (
@@ -71,7 +98,7 @@ function CreateTodo() {
           }}  className=' text-2xl font-bold'>←</button>
           <button onClick={handleCreateTaskCollection}>Done</button>
         </header>
-        <form action="" method="">
+        <div action="" method="">
             <section className='px-3 py-3 gap-2'>
                 <input type="text" onChange={handleInputField} name="subject" value={namesInput.subject} placeholder='Subject Name'  className=' px-2 py-1 placeholder:font-medium bg-gray-100 w-full border-black border-[1px] outline-none rounded-md' id="" />
                 <p className={`${namesInput.subject.length===0 && emptyFiledTrigger?'block':'hidden'} text-red-500 text-xs font-semibold px-3 py-1`}>This input field is required</p>
@@ -102,7 +129,7 @@ function CreateTodo() {
                 </section>
                 <div>
                     {
-                        listOfTodos.length===0?<p className=' font-semibold text-center'>You Have No Tasks Here</p>:
+                        listOfTodos.length===0?<p className=' font-semibold text-center'>{emptyListOfTodo}</p>:
                         <div className=' flex flex-col gap-2'>
                             {
                                 listOfTodos.map(function(eachCreatedTask){
@@ -118,7 +145,8 @@ function CreateTodo() {
                     }
                 </div>
             </div>
-        </form>
+        </div>
+        <br />
     </React.Fragment>
   )
 }

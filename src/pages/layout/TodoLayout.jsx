@@ -6,16 +6,18 @@ import Navigation from './Navigation';
 function TodoLayout() {
   return (
     <React.Fragment>
-        <div className=' flex flex-col min-h-screen'>
-          <header>
-            <Header/>
-          </header>
-          <main className=' flex-grow '>
-            <Outlet/><br />
-          </main>
-          <footer>
-            <Navigation/>
-          </footer>
+        <div className=' md:flex-row-reverse md flex flex-col min-h-screen'>
+          <div className=' md:w-[75%]'>
+            <header>
+              <Header/>
+            </header>
+            <main className=' flex-grow '>
+              <Outlet/><br />
+            </main>
+          </div>
+            <footer className='md:w-[25%] '>
+              <Navigation/>
+            </footer>
         </div>
     </React.Fragment>
   )

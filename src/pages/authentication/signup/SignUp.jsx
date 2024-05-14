@@ -2,7 +2,8 @@ import React from 'react'
 import {IoPersonCircleOutline} from "react-icons/io5"
 import {RiLockPasswordLine} from "react-icons/ri"
 import {MdOutlineEmail} from "react-icons/md"
-
+import {FcGoogle} from "react-icons/fc"
+import {IoLogoApple} from "react-icons/io5"
 
 function SignUp() {
   return (
@@ -31,7 +32,10 @@ function SignUp() {
             </div>
           </div>
         </form>
-
+        <div className=' flex items-center justify-evenly py-5 text-3xl'>
+          <FcGoogle className=' bg-gray-200 px-1 py-1 rounded-full'/>
+          <IoLogoApple className=' bg-gray-200 px-1 py-1 rounded-full'/>
+        </div>
     </React.Fragment>
   )
 }
